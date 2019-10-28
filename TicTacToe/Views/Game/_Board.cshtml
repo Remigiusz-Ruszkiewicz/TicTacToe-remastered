@@ -9,8 +9,9 @@
                 {
                     foreach (var cell in row.Cells)
                     {
-                        <td onclick='GetCanvas("r_@(row.Id)c_@cell.Id")'>
-                            <canvas id="r_@(row.Id)c_@cell.Id"></canvas>
+                        string id = $"r_{row.Id}c_{cell.Id}";
+                        <td onclick='GetCanvas("@id")'>
+                                <canvas id="@id"></canvas>
                         </td>
                     }
                 }

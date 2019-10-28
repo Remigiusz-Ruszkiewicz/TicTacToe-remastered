@@ -22,8 +22,14 @@ namespace TicTacToe.Controllers
         }
         public IActionResult Small()
         {
+
             ViewBag.Results = repo.GetResults();
             return returnView(MethodBase.GetCurrentMethod().Name.ToLower());
+        }
+        public IActionResult SetValue(string id, string value)
+        {
+            repo.SetResult(new Result { Id = id, Value = value });
+            return RedirectToAction("Small");
         }
         public IActionResult Medium()
         {            

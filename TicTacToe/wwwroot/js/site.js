@@ -5,8 +5,21 @@ function GetCanvas(id) {
         var ctx = c.getContext("2d");
         ctx.beginPath();
         ctx.arc(72, 75, 70, 0, 2 * Math.PI);
-        ctx.stroke(); 
-        shapeType = 'X'
+        ctx.stroke();
+        $.ajax(
+            type: "POST",
+            url: "Game/SetValue",
+            data: {
+                id: id,
+                value: "O",
+                succes(result) {
+                    alert(result)
+                },
+                error(e) {
+                    alert(e)
+                }
+            }
+        )
     }
     else {
         var c = document.getElementById(id);        

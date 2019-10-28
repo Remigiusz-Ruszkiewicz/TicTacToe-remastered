@@ -9,5 +9,7 @@ namespace TicTacToe.Repositories
     public abstract class Repo
     {
         public abstract List<Result> GetResults();
+
+        public abstract void SetResult(Result result);
     }
 }

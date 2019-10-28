@@ -6,9 +6,12 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using TicTacToe.Data;
 using TicTacToe.Repositories;
+
 
 namespace TicTacToe
 {
@@ -30,7 +33,10 @@ namespace TicTacToe
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-            services.AddTransient<Repo, JsonRepo>();
+            services.AddDbContext<Context>(
+                o => o.UseSqlServer(
+                    Configuration.GetConnectionString("SQL")));
+            services.AddTransient<Repo, SQLRepo>();
             //services.AddScoped<Repo, JsonRepo>();
             //services.AddSingleton<Repo, JsonRepo>();
 
