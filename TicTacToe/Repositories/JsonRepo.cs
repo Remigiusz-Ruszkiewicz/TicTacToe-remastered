@@ -17,6 +17,11 @@ namespace TicTacToe.Repositories
             return JsonConvert.DeserializeObject<List<Result>>(data);
         }
 
+        public override void ResetResult()
+        {
+            System.IO.File.WriteAllText(file,"");
+        }
+
         public override void SetResult(Result result)
         {
             var list = GetResults();

@@ -40,6 +40,11 @@ namespace TicTacToe.Controllers
             var director = new Director(BuilderFactory.GetBuilder(method));
             director.Construct();
             return View(director.GetBoard);
-        }        
+        }
+        public IActionResult Reset()
+        {
+            repo.ResetResult();
+            RedirectToAction(nameof(Small));
+        }
     }
 }

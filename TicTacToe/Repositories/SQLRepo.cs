@@ -20,6 +20,12 @@ namespace TicTacToe.Repositories
             return context.Results.ToList();
         }
 
+        public override void ResetResult()
+        {
+            context.Results.RemoveRange(GetResults());
+            context.SaveChanges();
+        }
+
         public override void SetResult(Result result)
         {
             context.Results.Add(result);
